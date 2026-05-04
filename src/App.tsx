@@ -22,29 +22,20 @@ function App() {
     setAnimeInfo(null);
 
     try {
-      // Search anime by image using trace.moe
       const searchResult = await searchAnimeByImage(file);
 
       if (searchResult.result && searchResult.result.length > 0) {
         const topResult = searchResult.result[0];
         setResult(topResult);
 
-        // Fetch detailed anime info from AniList
         try {
           const info = await getAnimeInfo(topResult.anilist);
-
-          // Translate description to Spanish if it exists
           if (info.description) {
-            console.log('Original description:', info.description.substring(0, 100));
-            const translatedDescription = await translateText(info.description, 'es');
-            console.log('Translated description:', translatedDescription.substring(0, 100));
-            info.description = translatedDescription;
+            info.description = await translateText(info.description, 'es');
           }
-
           setAnimeInfo(info);
         } catch (err) {
           console.error('Error fetching anime details:', err);
-          // Continue even if AniList fails
         }
       } else {
         setError('No se encontraron coincidencias. Intenta con otra imagen.');
@@ -63,20 +54,21 @@ function App() {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col overflow-hidden">
+    <div className="min-h-screen w-full flex flex-col">
       <Header onHelpClick={() => setIsHelpOpen(true)} />
 
-      <main className="flex-1 overflow-hidden">
+      <main className="flex-1 relative">
         {error && (
-          <div className="h-full flex items-center justify-center p-6">
-            <div className="glass-effect rounded-3xl p-8 max-w-md text-center">
-              <div className="text-6xl mb-4">😔</div>
-              <h2 className="text-2xl font-bold mb-4 text-red-400">Oops...</h2>
-              <p className="text-gray-300 mb-6">{error}</p>
-              <button
-                onClick={handleNewSearch}
-                className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg font-semibold hover-glow transition-all duration-300 hover:scale-105"
-              >
+          <div className="min-h-[60vh] flex items-center justify-center p-6">
+            <div className="glass-strong rounded-3xl p-8 max-w-md text-center animate-fade-in-up">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/15 border border-red-500/30 flex items-center justify-center">
+                <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
+                </svg>
+              </div>
+              <h2 className="font-display text-2xl font-bold mb-2 text-red-300">Algo salió mal</h2>
+              <p className="text-white/70 mb-6 text-pretty">{error}</p>
+              <button type="button" onClick={handleNewSearch} className="btn-primary w-full">
                 Intentar de nuevo
               </button>
             </div>
@@ -88,11 +80,7 @@ function App() {
         )}
 
         {!error && result && (
-          <ResultsDisplay
-            result={result}
-            animeInfo={animeInfo}
-            onNewSearch={handleNewSearch}
-          />
+          <ResultsDisplay result={result} animeInfo={animeInfo} onNewSearch={handleNewSearch} />
         )}
       </main>
 

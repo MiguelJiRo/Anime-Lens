@@ -110,7 +110,7 @@ const translateWithMyMemory = async (text: string, targetLang: string): Promise<
 export const translateText = async (text: string, targetLang: string = 'es'): Promise<string> => {
   try {
     // Eliminar tags HTML antes de traducir
-    let cleanText = text.replace(/<[^>]*>/g, '').trim();
+    const cleanText = text.replace(/<[^>]*>/g, '').trim();
 
     if (!cleanText) return '';
 
