@@ -2,9 +2,65 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anime Search - Encuentra anime por imagen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ec4899" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Primary Meta -->
+    <title>Anime Lens — Encuentra anime por imagen al instante</title>
+    <meta name="description" content="Identifica el anime, episodio y momento exacto de cualquier escena con solo subir una imagen. Búsqueda inversa potenciada por trace.moe y AniList con resultados en segundos." />
+    <meta name="keywords" content="anime, búsqueda inversa de imagen, identificar anime, qué anime es, trace.moe, anilist, anime lens, reverse image search" />
+    <meta name="author" content="MiguelJiRo" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://anime-lens.app/" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Anime Lens" />
+    <meta property="og:title" content="Anime Lens — Encuentra anime por imagen al instante" />
+    <meta property="og:description" content="Sube cualquier escena y descubre el anime, episodio y momento exacto. Resultados en segundos con IA." />
+    <meta property="og:image" content="/icon-512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:url" content="https://anime-lens.app/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Anime Lens — Encuentra anime por imagen" />
+    <meta name="twitter:description" content="Identifica cualquier escena de anime al instante con búsqueda inversa por imagen." />
+    <meta name="twitter:image" content="/icon-512.png" />
+
+    <!-- Performance: preconnect to APIs -->
+    <link rel="preconnect" href="https://api.trace.moe" crossorigin />
+    <link rel="preconnect" href="https://graphql.anilist.co" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/anime-lens.png" fetchpriority="high" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Anime Lens",
+      "description": "Búsqueda inversa de imágenes de anime que identifica escenas, episodios y momentos exactos.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "es",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "creator": { "@type": "Person", "name": "MiguelJiRo", "url": "https://github.com/MiguelJiRo" }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
