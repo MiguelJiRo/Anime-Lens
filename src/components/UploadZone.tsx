@@ -61,11 +61,6 @@ const UploadZone: React.FC<UploadZoneProps> = ({ onImageSelect, isLoading }) => 
       <div className="aurora-orb w-[400px] h-[400px] -bottom-32 -right-24 bg-purple-500/30" aria-hidden="true" />
 
       <div className="relative w-full max-w-3xl flex flex-col items-center text-center animate-fade-in-up">
-        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-medium tracking-wide text-white/80 mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          Powered by trace.moe + AniList
-        </span>
-
         <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance leading-tight">
           Identifica cualquier escena <span className="text-gradient">de anime</span>
         </h2>
@@ -135,31 +130,9 @@ const UploadZone: React.FC<UploadZoneProps> = ({ onImageSelect, isLoading }) => 
             </>
           )}
         </label>
-
-        <ul className="mt-5 sm:mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left">
-          <FeatureChip icon="⚡" title="Resultados rápidos" desc="En segundos por escena" />
-          <FeatureChip icon="🎬" title="Episodio + tiempo" desc="Vista previa en vídeo" />
-          <FeatureChip icon="🌐" title="Info en español" desc="Sinopsis traducida" />
-        </ul>
       </div>
     </section>
   );
 };
-
-interface FeatureChipProps {
-  icon: string;
-  title: string;
-  desc: string;
-}
-
-const FeatureChip: React.FC<FeatureChipProps> = ({ icon, title, desc }) => (
-  <li className="glass rounded-xl px-4 py-3 flex items-start gap-3">
-    <span className="text-xl" aria-hidden="true">{icon}</span>
-    <div>
-      <p className="text-sm font-semibold text-white">{title}</p>
-      <p className="text-xs text-white/55 mt-0.5">{desc}</p>
-    </div>
-  </li>
-);
 
 export default UploadZone;
